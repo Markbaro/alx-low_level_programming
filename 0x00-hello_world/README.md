@@ -1,1 +1,1 @@
-name
+5 printf
