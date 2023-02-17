@@ -1,23 +1,25 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
  * main - Entry point
  *
  * Return: Always 0 (Success)
  */
+
 int main(void)
 {
-	int d = 90;
+	int d;
 
-	while (d < 100)
+	for (d = '0'; d <= '9'; d++)
 	{
 		putchar(d);
-		if (d != 99)
+		if (d != '9')
 		{
 			putchar(',');
 			putchar(' ');
 		}
-		d++;
 	}
 	putchar('\n');
 
