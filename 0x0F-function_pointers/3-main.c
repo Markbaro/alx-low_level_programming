@@ -1,17 +1,20 @@
 #include "3-calc.h"
+#include <stdio.h>
+#include <stdlib.h>
 
+#define ARGV(X, S) (argv[X][0] == S)
 /**
- * main - program that perfroms simple operations
- * @argc: number of arguments
- * @argv: array of arguments
+ * main - entry point, This fuction perform a calulaction base on 2 numbers and
+ * the given operator.
+ * @argc: number of agruments
+ * @argv: the string value of the arguments.
  *
- * Return: Always 0 (Success)
+ * Return: 0 (on Sucess)
  */
 int main(int argc, char *argv[])
 {
-	int arg1, arg2, result;
-	char o;
-	int (*func)(int, int);
+	int a_int, b_int, result;
+	char *op;
 
 	if (argc != 4)
 	{
@@ -19,28 +22,26 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	arg1 = atoi(argv[1]);
-	arg2 = atoi(argv[3]);
+	a_int = atoi(argv[1]);
+	b_int = atoi(argv[3]);
+	op = argv[2];
 
-	func = get_op_func(argv[2]);
-
-	if (!func)
-	{
-		printf("Error\n");
-		exit(99);
-	}
-
-	o = *argv[2];
-
-	if ((o == '/' || o == '%') && arg2 == 0)
+	if ((ARGV(2, '/') || ARGV(2, '%')) && b_int == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
 
-	result = func(arg1, arg2);
+	if (!(get_op_func(op)))
+	{
+		printf("Error\n");
+		exit(99);
+	}
 
+	result = (get_op_func(op))(a_int, b_int);
 	printf("%d\n", result);
 
 	return (0);
 }
+
+
