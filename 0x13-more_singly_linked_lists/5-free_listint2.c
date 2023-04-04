@@ -6,17 +6,18 @@
   * @head: a pointer to the list to be freed
   * Return: void
   */
+
 void free_listint2(listint_t **head)
 {
-	listint_t *currentNode;
+	listint_t *ptr;
 
 	if (head)
 	{
 		while (*head)
 		{
-			currentNode = (*head);
+			ptr = (*head);
 			*head = (*head)->next;
-			free(currentNode);
+			free(ptr);
 		}
 	}
 	else
