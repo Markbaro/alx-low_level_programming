@@ -5,16 +5,18 @@
  * @head: pointer to the head node of the list
  * Return: sum all data(n) or 0 if empty
  */
+
 int sum_listint(listint_t *head)
 {
-	int sum;
+	int sum = 0;
 
-	sum = 0;
-	while (head != NULL)
+	if (head == NULL)
+		return (0);
+
+	while (head)
 	{
 		sum += head->n;
 		head = head->next;
 	}
-
 	return (sum);
 }
