@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 /**
- *int flip_bits - flips bits
- *@n - ....................
- *@m - ....................
- *Return : ................
+ * int flip_bits - flips bits
+ * @n:base number
+ * @m:new flipped number
+ * Return:number of flips
  */
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
