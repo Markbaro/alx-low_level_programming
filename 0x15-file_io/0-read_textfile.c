@@ -14,11 +14,11 @@ ssize_t read_textfile(const char *filename, size_t max_chars)
 	char *buffer;
 
 	if (filename == NULL)
-		return 0;
+		return (0);
 
 	buffer = malloc(sizeof(char) * max_chars);
 	if (buffer == NULL)
-		return 0;
+		return (0);
 
 	fd = open(filename, O_RDONLY);
 	read_count = read(fd, buffer, max_chars);
@@ -27,11 +27,11 @@ ssize_t read_textfile(const char *filename, size_t max_chars)
 	if (fd == -1 || read_count == -1 || write_count == -1 || write_count != read_count)
 	{
 		free(buffer);
-		return 0;
+		return (0);
 	}
 
 	free(buffer);
 	close(fd);
 
-	return write_count;
+	return (write_count);
 }
