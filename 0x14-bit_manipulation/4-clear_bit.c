@@ -17,7 +17,7 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	}
 	else
 	{
-		x = ~ (1UL << index);
+		x = (1UL << index);
 		*n &= x;
 		return (1);
 	}
