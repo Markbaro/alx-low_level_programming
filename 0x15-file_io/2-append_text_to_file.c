@@ -11,28 +11,27 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	FILE *fp;
-	size_t len, writing;
+	int file = 0;
+	int writing = 0;
+	int length = 0;
+	
 
 	if (filename == NULL)
-	{
 		return (-1);
-	}
-	fp = fopen(filename, "a");
-	if (fp == NULL)
-	{
-		return (-1);
-	}
+
 	if (text_content != NULL)
 	{
-		len = strlen(text_content);
-		writing = fwrite(text_content, sizeof(char), len, fp);
-		if (written != text_len)
-		{
-			fclose(fp);
-			return (-1);
-		}
+		for (length = 0; text_content[length]; length++;)
+			
 	}
-	fclose(fp);
+
+	file = open(filename, O_WRONLY | O_APPEND);
+	writing = write(file, text_content, len);
+
+	if (file == -1 || writing == -1)
+		return (-1);
+
+	close(file);
+
 	return (1);
 }
