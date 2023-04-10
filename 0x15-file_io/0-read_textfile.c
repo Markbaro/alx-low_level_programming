@@ -8,7 +8,7 @@
  * Return:0 if it failed
  */
 
-ssize_t read_textfile(const char *filename, size_t max_chars)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t file, reading, writing;
 	char *buffer;
