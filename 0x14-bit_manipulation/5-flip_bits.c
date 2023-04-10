@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * int flip_bits - flips bits
+ * flip_bits - flips bits
  * @n:base number
  * @m:new flipped number
  * Return:number of flips
