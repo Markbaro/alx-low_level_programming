@@ -10,7 +10,7 @@
  * print_error - print error messages
  * @error : specific error message
  * @arg : the arguments
- * Return : 1 on success 0r -1 if it fails
+ * Return: 1 on success 0r -1 if it fails
  *
  */
 
