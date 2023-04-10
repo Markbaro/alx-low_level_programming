@@ -81,5 +81,5 @@ int main(int argc, char *argv[])
 	}
 	close(fp1);
 	close(fp2);
-	return 0;
+	return (0);
 }
