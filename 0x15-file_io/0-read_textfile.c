@@ -10,28 +10,28 @@
 
 ssize_t read_textfile(const char *filename, size_t max_chars)
 {
-	ssize_t fd, read_count, write_count;
+	ssize_t file, reading, writing;
 	char *buffer;
 
 	if (filename == NULL)
 		return (0);
 
-	buffer = malloc(sizeof(char) * max_chars);
+	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 		return (0);
 
-	fd = open(filename, O_RDONLY);
-	read_count = read(fd, buffer, max_chars);
-	write_count = write(STDOUT_FILENO, buffer, read_count);
+	file = open(filename, O_RDONLY);
+	reading = read(o, buffer, letters);
+	writing = write(STDOUT_FILENO, buffer, r);
 
-	if (fd == -1 || read_count == -1 || write_count == -1 || write_count != read_count)
+	if (file == -1 || reading == -1 || writing == -1 || writing != reading)
 	{
 		free(buffer);
 		return (0);
 	}
 
 	free(buffer);
-	close(fd);
+	close(o);
 
-	return (write_count);
+	return (writing);
 }
