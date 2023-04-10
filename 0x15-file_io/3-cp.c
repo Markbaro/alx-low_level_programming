@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 	int fp1, fp2, readit, writeit;
 	char buf[BUF_SIZE];
 	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	
+
 	if (argc != 3)
 	{
 		print_error(97, argv[0]);
