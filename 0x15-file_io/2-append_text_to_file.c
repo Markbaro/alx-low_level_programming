@@ -14,19 +14,24 @@ int append_text_to_file(const char *filename, char *text_content)
 	int file = 0;
 	int writing = 0;
 	int length = 0;
-	
+
 
 	if (filename == NULL)
+	{
 		return (-1);
+	}
 
 	if (text_content != NULL)
 	{
-		for (length = 0; text_content[length]; length++;)
-			
+		for (length = 0; text_content[length]; length++)
+		{
+			/* empty body */
+		}
+
 	}
 
 	file = open(filename, O_WRONLY | O_APPEND);
-	writing = write(file, text_content, len);
+	writing = write(file, text_content, length);
 
 	if (file == -1 || writing == -1)
 		return (-1);
