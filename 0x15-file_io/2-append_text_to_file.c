@@ -11,8 +11,8 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	FILE *fp;
-	int append;
-
+	size_t len, writing;
+	
 	if (filename == NULL)
 	{
 		return (-1);
@@ -24,14 +24,14 @@ int append_text_to_file(const char *filename, char *text_content)
 	}
 	if (text_content != NULL)
 	{
-		append = fputs(text_content, fp);
-		if (append == EOF)
+		len = strlen(text_content);
+		writing = fwrite(text_content, sizeof(char), len, fp);
+		if (written != text_len)
 		{
 			fclose(fp);
 			return (-1);
 		}
 	}
 	fclose(fp);
-	return (-1);
+	return (1);
 }
-
