@@ -6,8 +6,6 @@
 
 #define BUF_SIZE 1024
 
-
-
 /**
  * print_error - print error messages
  * @error : specific error message
