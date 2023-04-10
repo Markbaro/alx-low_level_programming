@@ -50,34 +50,34 @@ int main(int argc, char *argv[])
 	
 	if (argc != 3)
 	{
-        print_error(97, argv[0]);
-        exit(97);
+		print_error(97, argv[0]);
+		exit(97);
 	}
 	fp1 = open(argv[1], O_RDONLY);
 	if (fp1 == -1)
 	{
-        print_error(98, argv[1]);
-        exit(98);
+		print_error(98, argv[1]);
+		exit(98);
 	}
 	fp2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
 	if (fp2 == -1)
 	{
-        print_error(99, argv[2]);
-        exit(99);
-	}
-	while ((readit = read(fp1, buf, BUF_SIZE)) > 0)
-	{
-        writeit = write(fp2, buf, readit);
-        if (writeit != readit)
-	{
 		print_error(99, argv[2]);
 		exit(99);
 	}
+	while ((readit = read(fp1, buf, BUF_SIZE)) > 0)
+	{
+		writeit = write(fp2, buf, readit);
+		if (writeit != readit)
+		{
+			print_error(99, argv[2]);
+			exit(99);
+		}
 	}
 	if (readit == -1)
 	{
-        print_error(98, argv[1]);
-        exit(98);
+		print_error(98, argv[1]);
+		exit(98);
 	}
 	close(fp1);
 	close(fp2);
