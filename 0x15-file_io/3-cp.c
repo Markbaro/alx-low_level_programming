@@ -31,7 +31,6 @@ void print_error(int error, char *arg)
 			dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", arg);
 			break;
 		default:
-			dprintf(STDERR_FILENO, "Unknown error occurred\n");
                         break;
 	}
 }
