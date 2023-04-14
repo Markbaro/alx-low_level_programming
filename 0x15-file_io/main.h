@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define BUF_SIZE 1024
+#define BUFFER_SIZE 1024
 
 #include <sys/types.h>
 #include <sys/stat.h>
