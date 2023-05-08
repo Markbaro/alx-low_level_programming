@@ -8,17 +8,16 @@
 
 /**
  * print_addr - prints address
- * @ptr: magic.
- * Return: no return.
+ * @ptr: magic
+ * Return: no return
  */
-
 void print_addr(char *ptr)
 {
 	int i;
 	int begin;
 	char sys;
 
-	printf("  Entry point address:               0x");
+	printf("   Entry point address:		0x");
 
 	sys = ptr[4] + '0';
 	if (sys == '1')
@@ -44,7 +43,7 @@ void print_addr(char *ptr)
 			if (ptr[i] >= 0)
 				printf("%02x", ptr[i]);
 
-			else if (ptr[i] < 0)
+			else if ((ptr[i] < 0))
 				printf("%02x", 256 + ptr[i]);
 
 		}
@@ -54,10 +53,9 @@ void print_addr(char *ptr)
 
 /**
  * print_type - prints type
- * @ptr: magic.
- * Return: no return.
+ * @ptr: magic
+ * Return: no return
  */
-
 void print_type(char *ptr)
 {
 	char type = ptr[16];
@@ -67,7 +65,7 @@ void print_type(char *ptr)
 	else
 		type = ptr[17];
 
-	printf("  Type:                              ");
+	printf("    Type:				");
 	if (type == 0)
 		printf("NONE (No file type)\n");
 	else if (type == 1)
@@ -84,15 +82,14 @@ void print_type(char *ptr)
 
 /**
  * print_osabi - prints osabi
- * @ptr: magic.
- * Return: no return.
+ * @ptr: magic
+ * Return: no return
  */
-
 void print_osabi(char *ptr)
 {
 	char osabi = ptr[7];
 
-	printf("  OS/ABI:                            ");
+	printf("  OS/ABI:			");
 	if (osabi == 0)
 		printf("UNIX - System V\n");
 	else if (osabi == 2)
@@ -102,39 +99,36 @@ void print_osabi(char *ptr)
 	else
 		printf("<unknown: %x>\n", osabi);
 
-	printf("  ABI Version:                       %d\n", ptr[8]);
+	printf("  ABI Version:			%d\n", ptr[8]);
 }
 
 
 /**
  * print_version - prints version
- * @ptr: magic.
- * Return: no return.
+ * @ptr: magic
+ * Return: no return
  */
-
 void print_version(char *ptr)
 {
 	int version = ptr[6];
 
-	printf("  Version:                           %d", version);
+	printf("  Version:			%d", version);
 
 	if (version == EV_CURRENT)
 		printf(" (current)");
 
 	printf("\n");
 }
-
 /**
  * print_data - prints data
- * @ptr: magic.
- * Return: no return.
+ * @ptr: magic
+ * Return: no return
  */
-
 void print_data(char *ptr)
 {
 	char data = ptr[5];
 
-	printf("  Data:                              2's complement");
+	printf("  Data:				2's complement");
 	if (data == 1)
 		printf(", little endian\n");
 
@@ -142,11 +136,10 @@ void print_data(char *ptr)
 		printf(", big endian\n");
 }
 /**
- * print_magic - prints magic info.
- * @ptr: magic.
- * Return: no return.
+ * print_magic - prints magic info
+ * @ptr: magic
+ * Return: no return
  */
-
 void print_magic(char *ptr)
 {
 	int bytes;
@@ -161,11 +154,10 @@ void print_magic(char *ptr)
 }
 
 /**
- * check_sys - check the version system.
- * @ptr: magic.
- * Return: no return.
+ * check_sys - check the version system
+ * @ptr: magic
+ * Return: no return
  */
-
 void check_sys(char *ptr)
 {
 	char sys = ptr[4] + '0';
@@ -177,10 +169,10 @@ void check_sys(char *ptr)
 	print_magic(ptr);
 
 	if (sys == '1')
-		printf("  Class:                             ELF32\n");
+		printf("  Class:			ELF32\n");
 
 	if (sys == '2')
-		printf("  Class:                             ELF64\n");
+		printf("  Class:			ELF64\n");
 
 	print_data(ptr);
 	print_version(ptr);
@@ -190,11 +182,10 @@ void check_sys(char *ptr)
 }
 
 /**
- * check_elf - check if it is an elf file.
- * @ptr: magic.
- * Return: 1 if it is an elf file. 0 if not.
+ * check_elf - check if it is an elf file
+ * @ptr: magic
+ * Return: 1 if it is an elf file, 0 if not
  */
-
 int check_elf(char *ptr)
 {
 	int addr = (int)ptr[0];
@@ -209,12 +200,11 @@ int check_elf(char *ptr)
 }
 
 /**
- * main - check the code for ALX School students.
- * @argc: number of arguments.
- * @argv: arguments vector.
- * Return: Always 0.
+ * main - check the code for ALX students
+ * @argc: number of arguments
+ * @argv: argument vector
+ * Return: Always 0
  */
-
 int main(int argc, char *argv[])
 {
 	int fd, ret_read;
@@ -222,7 +212,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
+		dprintf(STDERR_FILENO, "Usage: elf_headere elf_filename\n");
 		exit(98);
 	}
 
@@ -230,7 +220,7 @@ int main(int argc, char *argv[])
 
 	if (fd < 0)
 	{
-		dprintf(STDERR_FILENO, "Err: file can not be open\n");
+		dprintf(STDERR_FILENO, "ERR: file can not be open\n");
 		exit(98);
 	}
 
@@ -239,13 +229,13 @@ int main(int argc, char *argv[])
 
 	if (ret_read == -1)
 	{
-		dprintf(STDERR_FILENO, "Err: The file can not be read\n");
+		dprintf(STDERR_FILENO, "ERR: The file can not be read\n");
 		exit(98);
 	}
 
 	if (!check_elf(ptr))
 	{
-		dprintf(STDERR_FILENO, "Err: It is not an ELF\n");
+		dprintf(STDERR_FILENO, "ERR: It is not an ELF\n");
 		exit(98);
 	}
 
